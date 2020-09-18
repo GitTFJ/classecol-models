@@ -169,7 +169,7 @@ with open('bio_per_org_rapid_norm', 'rb') as handle:
 tok = norm.transform(tok)
 
 pred_nb = nb.predict_proba(r.data['text'])
-pred_svm = svm.decision_function(r.data['text'])
+pred_svm = svm.decision_function(r.data['text'])[:, None]
 pred_rf = rf.predict_proba(r.data['text'])
 pred_lr = lr.predict_proba(r.data['text'])
 pred_nn = nn.predict_proba(r.data['text'])

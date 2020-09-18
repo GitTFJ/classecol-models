@@ -161,7 +161,7 @@ svm = joblib.load('hunt_all_rapid_svm.sav')
 rf = joblib.load('hunt_all_rapid_rf.sav')
 lr = joblib.load('hunt_all_rapid_lr.sav')
 nn = joblib.load('hunt_all_rapid_nn.sav')
-dnn = keras.models.load_model("bio_all_rapid_dnn.h5")
+dnn = keras.models.load_model("hunt_all_rapid_dnn.h5")
 
 with open('hunt_all_rapid_tokenize', 'rb') as handle:
     tokenize = pickle.load(handle)

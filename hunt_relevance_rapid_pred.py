@@ -161,7 +161,7 @@ svm = joblib.load('hunt_relevance_rapid_svm.sav')
 rf = joblib.load('hunt_relevance_rapid_rf.sav')
 lr = joblib.load('hunt_relevance_rapid_lr.sav')
 nn = joblib.load('hunt_relevance_rapid_nn.sav')
-dnn = keras.models.load_model("bio_all_rapid_dnn.h5")
+dnn = keras.models.load_model("hunt_relevance_rapid_dnn.h5")
 
 with open('hunt_relevance_rapid_tokenize', 'rb') as handle:
     tokenize = pickle.load(handle)
@@ -171,7 +171,7 @@ with open('hunt_relevance_rapid_norm', 'rb') as handle:
 tok = norm.transform(tok)
 
 pred_nb = nb.predict_proba(r.data['text'])
-pred_svm = svm.decision_function(r.data['text'])
+pred_svm = svm.decision_function(r.data['text'])[:, None]
 pred_rf = rf.predict_proba(r.data['text'])
 pred_lr = lr.predict_proba(r.data['text'])
 pred_nn = nn.predict_proba(r.data['text'])
