@@ -160,7 +160,7 @@ svm = joblib.load('nat_relevance_rapid_svm.sav')
 rf = joblib.load('nat_relevance_rapid_rf.sav')
 lr = joblib.load('nat_relevance_rapid_lr.sav')
 nn = joblib.load('nat_relevance_rapid_nn.sav')
-dnn = keras.models.load_model("wild_relevance_rapid_dnn.h5")
+dnn = keras.models.load_model("nat_relevance_rapid_dnn.h5")
 
 with open('nat_relevance_rapid_tokenize', 'rb') as handle:
     tokenize = pickle.load(handle)

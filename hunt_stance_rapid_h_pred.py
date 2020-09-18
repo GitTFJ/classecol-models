@@ -156,17 +156,17 @@ r.data['text'] = r.data['text'].apply(lambda x: contract(x))
 r.data['text'].apply(lambda x: len(x.split(' '))).sum()
 
 #load dat
-nb = joblib.load('hunt_stance_rapid_h_nb.sav')
-svm = joblib.load('hunt_stance_rapid_h_svm.sav')
-rf = joblib.load('hunt_stance_rapid_h_rf.sav')
-lr = joblib.load('hunt_stance_rapid_h_lr.sav')
-nn = joblib.load('hunt_stance_rapid_h_nn.sav')
-dnn = keras.models.load_model("hunt_stance_rapid_h_dnn.h5")
+nb = joblib.load('hunt_stance_h_rapid_nb.sav')
+svm = joblib.load('hunt_stance_h_rapid_svm.sav')
+rf = joblib.load('hunt_stance_h_rapid_rf.sav')
+lr = joblib.load('hunt_stance_h_rapid_lr.sav')
+nn = joblib.load('hunt_stance_h_rapid_nn.sav')
+dnn = keras.models.load_model("hunt_stance_h_rapid_dnn.h5")
 
-with open('hunt_stance_rapid_h_tokenize', 'rb') as handle:
+with open('hunt_stance_h_rapid_tokenize', 'rb') as handle:
     tokenize = pickle.load(handle)
 tok = tokenize.transform(r.data['text']).toarray()
-with open('hunt_stance_rapid_h_norm', 'rb') as handle:
+with open('hunt_stance_h_rapid_norm', 'rb') as handle:
     norm = pickle.load(handle)
 tok = norm.transform(tok)
 
@@ -187,5 +187,5 @@ comb = np.concatenate([
     pred_dnn
     ], axis=1)
     
-ensemble = joblib.load('hunt_stance_rapid_h_ensemble.sav')
+ensemble = joblib.load('hunt_stance_h_rapid_ensemble.sav')
 pred_comb = ensemble.predict(comb)

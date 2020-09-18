@@ -155,17 +155,17 @@ r.data['text'] = r.data['text'].apply(lambda x: contract(x))
 r.data['text'].apply(lambda x: len(x.split(' '))).sum()
 
 #load dat
-nb = joblib.load('nat_all(not_against)_rapid_nb.sav')
-svm = joblib.load('nat_all(not_against)_rapid_svm.sav')
-rf = joblib.load('nat_all(not_against)_rapid_rf.sav')
-lr = joblib.load('nat_all(not_against)_rapid_lr.sav')
-nn = joblib.load('nat_all(not_against)_rapid_nn.sav')
-dnn = keras.models.load_model("nat_all(not_against)_rapid_dnn.h5")
+nb = joblib.load('nat_all(not-against)_rapid_nb.sav')
+svm = joblib.load('nat_all(not-against)_rapid_svm.sav')
+rf = joblib.load('nat_all(not-against)_rapid_rf.sav')
+lr = joblib.load('nat_all(not-against)_rapid_lr.sav')
+nn = joblib.load('nat_all(not-against)_rapid_nn.sav')
+dnn = keras.models.load_model("nat_all(not-against)_rapid_dnn.h5")
 
-with open('nat_all(not_against)_rapid_tokenize', 'rb') as handle:
+with open('nat_all(not-against)_rapid_tokenize', 'rb') as handle:
     tokenize = pickle.load(handle)
 tok = tokenize.transform(r.data['text']).toarray()
-with open('nat_all(not_against)_rapid_norm', 'rb') as handle:
+with open('nat_all(not-against)_rapid_norm', 'rb') as handle:
     norm = pickle.load(handle)
 tok = norm.transform(tok)
 
@@ -187,5 +187,5 @@ comb = np.concatenate([
     r.sent_mat
     ], axis=1)
     
-ensemble = joblib.load('nat_all(not_against)_rapid_ensemble.sav')
+ensemble = joblib.load('nat_all(not-against)_rapid_ensemble.sav')
 pred_comb = ensemble.predict(comb)
