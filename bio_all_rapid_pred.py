@@ -10,6 +10,7 @@ import os
 import pandas as pd
 import re
 import nltk
+nltk.download('wordnet')
 from bs4 import BeautifulSoup
 import string
 import joblib
